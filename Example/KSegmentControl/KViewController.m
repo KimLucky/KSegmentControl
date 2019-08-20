@@ -8,6 +8,8 @@
 
 #import "KViewController.h"
 
+#import <KSegmentControl/KSegmentControl.h>
+
 @interface KViewController ()
 
 @end
@@ -18,6 +20,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+    
+    NSArray *titles = @[@"测试1", @"测试2", @"测试3", @"测试4"];
+    
+    KControlParameters *parameters = [KControlParameters new];
+    parameters.separatorDisplay = YES;
+    parameters.sliderDisplay = YES;
+    parameters.sliderHeight = 3;
+    parameters.selectedTitleAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"PingFangSC-Regular" size:15], NSForegroundColorAttributeName: [UIColor redColor] };
+    parameters.titleAttributes = @{ NSFontAttributeName: [UIFont fontWithName:@"PingFangSC-Regular" size:15], NSForegroundColorAttributeName: [UIColor blackColor] };
+    KSegmentControl *segmentControl = [KSegmentControl segmentControlWith:parameters titles:titles];
+    segmentControl.frame = CGRectMake(0, 200, 200, 40);
+    [self.view addSubview:segmentControl];
+    segmentControl.didSelectedBlock = ^(NSInteger index) {
+        NSLog(@"selected title = %@", titles[index]);
+    };
 }
 
 - (void)didReceiveMemoryWarning
