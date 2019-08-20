@@ -1,0 +1,6 @@
+framework module KSegmentControl {
+  umbrella header "KSegmentControl-umbrella.h"
+
+  export *
+  module * { export * }
+}
